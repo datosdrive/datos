@@ -129,6 +129,8 @@ struct Params {
     CAmount nStakeMaxValue{0};
     int nStakeMinAge{0};
     int nStakeMaxAge{0};
+    int nStakeMaxHeight{0};
+    int nStakeMaxMultiplier{0};
 
     /** these parameters are only used on devnet and can be configured from the outside */
     int nMinimumDifficultyBlocks{0};

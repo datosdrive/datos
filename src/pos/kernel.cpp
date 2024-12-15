@@ -240,6 +240,7 @@ bool CheckProofOfStake(CValidationState& state, const CBlockIndex* pindexPrev, c
     nBlockFromTime = pindex->GetBlockTime();
     const CScript& scriptSig = txin.scriptSig;
     ScriptError serror = SCRIPT_ERR_OK;
+    bool multiplier = pindexPrev->nHeight >= params.nStakeMaxHeight;
 
     if (amount < params.nStakeMinValue || amount > params.nStakeMaxValue) {
         LogPrint(BCLog::POS, "ERROR: %s: input coin amount is out of range (amount: %d, min: %d, max: %d)\n", __func__, amount, params.nStakeMinValue, params.nStakeMaxValue);
@@ -247,8 +248,9 @@ bool CheckProofOfStake(CValidationState& state, const CBlockIndex* pindexPrev, c
     }
 
     int inputAge = nTime - nBlockFromTime;
-    if (inputAge < params.nStakeMinAge || inputAge > params.nStakeMaxAge) {
-        LogPrint(BCLog::POS, "ERROR: %s: input age is out of range (amount: %d, min: %d, max: %d)\n", __func__, inputAge, params.nStakeMinAge, params.nStakeMaxAge);
+    if (inputAge < params.nStakeMinAge || multiplier ? inputAge > (params.nStakeMaxAge * params.nStakeMaxMultiplier) : inputAge > params.nStakeMaxAge) {
+        LogPrint(BCLog::POS, "ERROR: %s: input age is out of range (multiplier: %d, amount: %d, min: %d, max: %d)\n",
+                             __func__, multiplier ? params.nStakeMaxMultiplier : 1, params.nStakeMinAge, params.nStakeMaxAge);
         return false;
     }
 

@@ -43,7 +43,7 @@ bool CStakeWallet::SelectCoinsForStaking(CAmount nTargetValue, std::set<std::pai
 
         const auto &txout = pcoin->tx->vout[i];
         int input_age = GetTime() - pcoin->GetTxTime();
-        if (input_age < params.nStakeMinAge || input_age > params.nStakeMaxAge) {
+        if (input_age > (params.nStakeMaxAge * params.nStakeMaxMultiplier)) {
             LogPrint(BCLog::POS, "not using %s: age params not met\n", txout.ToString());
             continue;
         }

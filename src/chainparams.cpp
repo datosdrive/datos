@@ -258,6 +258,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = std::numeric_limits<int>::max();
+        consensus.nStakeMaxMultiplier = 3;
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -462,6 +464,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 90;
+        consensus.nStakeMaxHeight = 1;
+        consensus.nStakeMaxMultiplier = 3;
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -657,6 +661,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = 1;        // not enabled
+        consensus.nStakeMaxMultiplier = 1;    // 1x multiplier
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -928,6 +934,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = 1;        // not enabled
+        consensus.nStakeMaxMultiplier = 1;    // 1x multiplier
         consensus.nTokenHeight = 100;
 
         // The best chain should have at least this much work.
