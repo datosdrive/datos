@@ -1062,6 +1062,8 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     // minted for company wallet
     if (nPrevHeight <= 250) {
         nSubsidy = 8000000 * COIN;
+        if (IsTestnet())
+            nSubsidy = 2800000 * COIN;
     }
 
     return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
