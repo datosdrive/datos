@@ -258,6 +258,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = std::numeric_limits<int>::max();
+        consensus.nStakeMaxMultiplier = 3;
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -462,6 +464,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 90;
+        consensus.nStakeMaxHeight = 1;
+        consensus.nStakeMaxMultiplier = 3;
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -479,9 +483,9 @@ public:
         m_assumed_blockchain_size = 4;
         m_assumed_chain_state_size = 1;
 
-        genesis = CreateGenesisBlock(1697247000, 47480, 0x1f00ffff, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1734225997, 39574, 0x1f00ffff, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000087ff71b163016abe9d17ad7685615cdd5a0d1822b64b1d2525b1528cfff9"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000a98d34ad94bce26d897d248d385837d358c032daa5a15f5f93723950e2c"));
         assert(genesis.hashMerkleRoot == uint256S("0xd1aa59f1847a4036dcdbd3c1c4015add886ab2bb16564bdaf873013cc792214f"));
 
         vFixedSeeds.clear();
@@ -657,6 +661,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = 1;        // not enabled
+        consensus.nStakeMaxMultiplier = 1;    // 1x multiplier
         consensus.nTokenHeight = std::numeric_limits<int>::max();
 
         // The best chain should have at least this much work.
@@ -928,6 +934,8 @@ public:
         consensus.nStakeMaxValue = MAX_MONEY;
         consensus.nStakeMinAge = 10 * 60;
         consensus.nStakeMaxAge = 60 * 60 * 24 * 30;
+        consensus.nStakeMaxHeight = 1;        // not enabled
+        consensus.nStakeMaxMultiplier = 1;    // 1x multiplier
         consensus.nTokenHeight = 100;
 
         // The best chain should have at least this much work.
