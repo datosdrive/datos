@@ -36,6 +36,7 @@ public:
     bool ExistsForHeight(int height) const;
     bool GetProofByHash(const uint256& hash, CNetworkProof& netproof) const;
     bool GetProofByHeight(int height, CNetworkProof& netproof) const;
+    bool IsFullProofRequired(int height, CNetworkProof& netproof, const Consensus::Params& params) const;
     bool CheckSig(uint256& hash, std::vector<unsigned char>& vchProofSig, std::string& strError) const;
     bool Validate(CNetworkProof& netproof) const;
 };

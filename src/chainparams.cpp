@@ -174,6 +174,7 @@ public:
         consensus.DIP0003EnforcementHeight = 750;
         consensus.DIP0003EnforcementHash = uint256();
         consensus.DIP0008Height = std::numeric_limits<int>::max();
+        consensus.FullProofHeight = 1500;
         consensus.BRRHeight = std::numeric_limits<int>::max();
         consensus.MinBIP9WarningHeight = 5000;
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 16
@@ -380,6 +381,7 @@ public:
         consensus.DIP0003EnforcementHeight = 750;
         consensus.DIP0003EnforcementHash = uint256();
         consensus.DIP0008Height = std::numeric_limits<int>::max();
+        consensus.FullProofHeight = 1500;
         consensus.BRRHeight = std::numeric_limits<int>::max();
         consensus.MinBIP9WarningHeight = 5000;
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 16
@@ -578,6 +580,7 @@ public:
         consensus.DIP0003EnforcementHeight = std::numeric_limits<int>::max();
         consensus.DIP0003EnforcementHash = uint256();
         consensus.DIP0008Height = std::numeric_limits<int>::max();
+        consensus.FullProofHeight = 1500;
         consensus.BRRHeight = std::numeric_limits<int>::max();
         consensus.MinBIP9WarningHeight = 5000;
         consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 16
@@ -850,6 +853,7 @@ public:
         consensus.DIP0003EnforcementHeight = 500;
         consensus.DIP0003EnforcementHash = uint256();
         consensus.DIP0008Height = 432;
+        consensus.FullProofHeight = 1500;
         consensus.BRRHeight = 2500; // see block_reward_reallocation_tests
         consensus.MinBIP9WarningHeight = 0;
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 16
