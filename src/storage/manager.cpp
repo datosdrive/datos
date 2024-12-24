@@ -115,6 +115,17 @@ bool CProofManager::GetProofByHeight(int height, CNetworkProof& netproof) const
     return false;
 }
 
+bool CProofManager::IsFullProofRequired(int height, CNetworkProof& netproof, const Consensus::Params& params) const
+{
+    if (height >= params.FullProofHeight) {
+        if (netproof.IsEmpty()) {
+            LogPrint(BCLog::STORAGE, "%s: netproof hash %s is an empty proof, no longer accepted after height %d\n", __func__, netproof.hash.ToString(), params.FullProofHeight);
+            return false;
+        }
+    }
+    return true;
+}
+
 bool CProofManager::CheckSig(uint256& hash, std::vector<unsigned char>& vchProofSig, std::string& strError) const
 {
     if (vchProofSig.empty()) {
@@ -163,6 +174,11 @@ bool CProofManager::Validate(CNetworkProof& netproof) const
     if (AlreadyHave(netproof.hash)) {
         LogPrint(BCLog::STORAGE, "%s: already have proof hash %s\n", __func__, netproof.hash.ToString());
         return true;
+    }
+
+    if (!IsFullProofRequired(height, netproof, params)) {
+        LogPrint(BCLog::STORAGE, "%s: empty proof where full proof required (height %d, enforced %d)\n", __func__, height, params.FullProofHeight);
+        return false;
     }
 
     std::string strError;

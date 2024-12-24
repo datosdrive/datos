@@ -123,6 +123,7 @@ struct Params {
     std::string proofPublicKey;
     int nLastPoWBlock{0};
     int nTokenHeight{0};
+    int FullProofHeight{0};
     int64_t nPosTargetSpacing{0};
     int64_t nPosTargetTimespan{0};
     CAmount nStakeMinValue{0};
